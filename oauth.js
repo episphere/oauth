@@ -37,7 +37,8 @@ window.onload=async function(){ // check for oauth dance
                 Authorization: `Bearer ${oauth.parms.access_token}`,
             }
         })).json()
-        oauthDiv.innerHTML=`<p>Your bearer token is at <i>oauth.parms</i>;<br>I used it to get your profile information:</p>
+        oauthDiv.innerHTML=`<p>Your bearer token is now at <i>oauth.parms</i>;<br>I used it to get your profile information:</p>
+        <img src="${profile.picture}">
         <p style="color:green">${JSON.stringify(profile,null,3)}</p>`
     }
 }
