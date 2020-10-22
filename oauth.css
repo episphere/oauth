@@ -13,6 +13,6 @@ button {
     color:blue;
 }
 
-button:hover {
+button,a:hover {
     background-color: yellow
 }
