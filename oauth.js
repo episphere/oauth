@@ -34,7 +34,7 @@ window.onload=async function(){
                 Authorization: `Bearer ${oauth.parms.access_token}`,
             }
         })).json()
-        oauthDiv.innerHTML=`<p>Your bearer token is now available at <i>oauth.parms</i>. Your profile information:</p>
+        oauthDiv.innerHTML=`<p>Your bearer token is at <i>oauth.parms</i>;<br>I used it to get your profile information:</p>
         <p style="color:green">${JSON.stringify(profile,null,3)}</p>`
     }
 }
