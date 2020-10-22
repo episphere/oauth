@@ -22,9 +22,12 @@ oauth.getParms=txt=>{
 }
 
 
-window.onload=async function(){
-    if(location.hash.match('token_type=Bearer')){
+window.onload=async function(){ // check for oauth dance
+    if(location.hash.match('token_type=Bearer')){ // if this is the end of the oauth dance
+        // red parms
         oauth.getParms(location.hash.slice(1))
+        // clean hash
+        location.hash=''
         // get the user profile
         let url="https://www.googleapis.com/oauth2/v1/userinfo?alt=json";
         let profile =await (await fetch(url,{
