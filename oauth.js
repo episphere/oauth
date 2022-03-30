@@ -37,8 +37,17 @@ window.onload=async function(){ // check for oauth dance
                 Authorization: `Bearer ${oauth.parms.access_token}`,
             }
         })).json()
+        function listProfile(profile){
+            let h = '<table>'
+            Object.keys(profile).sort().forEach(k=>{
+                h+=`<tr><td><b style="color:maroon">${k}</b></td><td style="color:green">${profile[k]}</td></tr>`
+            })
+            h+="</table>"
+            //debugger
+            return h
+        }
         oauthDiv.innerHTML=`<p>Your bearer token is now at <i>oauth.parms</i>;<br>I used it to get your profile information:</p>
         <img src="${profile.picture}">
-        <p style="color:green">${JSON.stringify(profile,null,3)}</p>`
+        <p style="color:green">${listProfile(profile)}</p>`
     }
 }
