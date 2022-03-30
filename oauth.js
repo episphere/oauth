@@ -48,6 +48,7 @@ window.onload=async function(){ // check for oauth dance
         }
         oauthDiv.innerHTML=`<p>Your bearer token is now at <i>oauth.parms</i>;<br>I used it to get your profile information:</p>
         <img src="${profile.picture}">
+        <br>[<span style="background-color:yellow;color:maroon">${profile.id}</span>]
         <p style="color:green">${listProfile(profile)}</p>`
     }
 }
