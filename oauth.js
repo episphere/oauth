@@ -38,9 +38,9 @@ window.onload=async function(){ // check for oauth dance
             }
         })).json()
         function listProfile(profile){
-            let h = '<table>'
+            let h = '<table style="max-width:100%;table-layout:fixed">'
             Object.keys(profile).sort().forEach(k=>{
-                h+=`<tr><td><b style="color:maroon">${k}</b></td><td style="color:green">${profile[k]}</td></tr>`
+                h+=`<tr><td align="right" style="vertical-align:top"><b style="color:maroon">${k}</b>:</td><td style="color:green">${profile[k]}</td></tr>`
             })
             h+="</table>"
             //debugger
