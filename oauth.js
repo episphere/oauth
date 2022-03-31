@@ -38,7 +38,7 @@ window.onload=async function(){ // check for oauth dance
             }
         })).json()
         function tabulateParms(profile){
-            let h = '<table>'
+            let h = '<table style="font-family:arial">'
             Object.keys(profile).sort().forEach(k=>{
                 if(k!="access_token"){
                     h+=`<tr><td align="right" style="vertical-align:top"><b style="color:maroon">${k}</b>:</td><td style="color:green">${profile[k]}</td></tr>`
