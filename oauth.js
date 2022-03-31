@@ -37,18 +37,38 @@ window.onload=async function(){ // check for oauth dance
                 Authorization: `Bearer ${oauth.parms.access_token}`,
             }
         })).json()
-        function listProfile(profile){
+        function tabulateParms(profile){
             let h = '<table>'
             Object.keys(profile).sort().forEach(k=>{
-                h+=`<tr><td align="right" style="vertical-align:top"><b style="color:maroon">${k}</b>:</td><td style="color:green">${profile[k]}</td></tr>`
+                if(k!="access_token"){
+                    h+=`<tr><td align="right" style="vertical-align:top"><b style="color:maroon">${k}</b>:</td><td style="color:green">${profile[k]}</td></tr>`
+                }else{
+                    h+=`<tr><td align="right" style="vertical-align:top"><b style="color:maroon">${k}</b>:</td><td><textarea rows=6>${profile[k]}</textarea></td></tr>`
+                }
+                
             })
             h+="</table>"
             //debugger
             return h
         }
-        oauthDiv.innerHTML=`<p>Your bearer token is now at <i>oauth.parms</i>;<br>I used it to get your profile information below.<br> Your unique Google identifier is highlighted in yellow.</p>
+        oauthDiv.innerHTML=`<p>Your bearer token is now at <i>oauth.parms</i>;<br>It was used below to get your profile information.<br> Your unique Google identifier is highlighted in yellow.</p>
         <img src="${profile.picture}">
-        <br>[<span style="background-color:yellow;color:maroon">${profile.id}</span>]
-        <p style="color:green">${listProfile(profile)}</p>`
+        <br>ID: [<span style="background-color:yellow;color:maroon">${profile.id}</span>]
+        <br>Bearer Tk: [<span style="color:red">${oauth.parms.access_token.slice(0,20)}...</span>]
+        <p style="color:green">${tabulateParms(profile)}</p>
+        <p><button onclick="showHideOauth(this)">Show OAuth</button></p>
+        <div id="oauthTable" hidden=true>
+        ${tabulateParms(oauth.parms)}
+        </div>
+        `
+    }
+}
+function showHideOauth(that){
+    if(oauthTable.hidden){
+        oauthTable.hidden=false
+        that.textContent="Hide OAuth"
+    }else{
+        oauthTable.hidden=true
+        that.textContent="Show OAuth"
     }
 }
