@@ -38,7 +38,7 @@ window.onload=async function(){ // check for oauth dance
             }
         })).json()
         function listProfile(profile){
-            let h = '<table style="max-width:100%;table-layout:fixed">'
+            let h = '<table>'
             Object.keys(profile).sort().forEach(k=>{
                 h+=`<tr><td align="right" style="vertical-align:top"><b style="color:maroon">${k}</b>:</td><td style="color:green">${profile[k]}</td></tr>`
             })
@@ -46,7 +46,7 @@ window.onload=async function(){ // check for oauth dance
             //debugger
             return h
         }
-        oauthDiv.innerHTML=`<p>Your bearer token is now at <i>oauth.parms</i>;<br>I used it to get your profile information:</p>
+        oauthDiv.innerHTML=`<p>Your bearer token is now at <i>oauth.parms</i>;<br>I used it to get your profile information below.<br> Your unique Google identifier is highlighted in yellow.</p>
         <img src="${profile.picture}">
         <br>[<span style="background-color:yellow;color:maroon">${profile.id}</span>]
         <p style="color:green">${listProfile(profile)}</p>`
