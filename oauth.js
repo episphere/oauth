@@ -3,7 +3,7 @@ console.log('oauth.js loaded')
 oauth={
     href:location.href,
     clientId:'1061219778575-61rsuqnukha35jgbt2hkl8de17sehf4c.apps.googleusercontent.com',
-    proxy:'FHItcw9P8OKx4OtFHpK-F_aQ',
+    //proxy:'FHItcw9P8OKx4OtFHpK-F_aQ', // not mandatory
     authURL: 'https://accounts.google.com/o/oauth2/auth'
 }
 
@@ -51,6 +51,8 @@ window.onload=async function(){ // check for oauth dance
             //debugger
             return h
         }
+        oauth.parms.clientId=oauth.clientId
+        oauth.parms.authURL=oauth.authURL
         oauthDiv.innerHTML=`<p>Your bearer token is now at <i>oauth.parms</i>;<br>It was used below to get your profile information.<br> Your unique Google identifier is highlighted in yellow.</p>
         <img src="${profile.picture}">
         <br>ID: [<span style="background-color:yellow;color:maroon">${profile.id}</span>]
