@@ -43,7 +43,7 @@ window.onload=async function(){ // check for oauth dance
                 if(k!="access_token"){
                     h+=`<tr><td align="right" style="vertical-align:top"><b style="color:maroon">${k}</b>:</td><td style="color:green">${profile[k]}</td></tr>`
                 }else{
-                    h+=`<tr><td align="right" style="vertical-align:top"><b style="color:maroon">${k}</b>:</td><td><textarea id="bearer" rows=4>${profile[k]}</textarea><button style="vertical-align:top" onclick="bearer.select();navigator.clipboard.writeText(bearer.value)">copy</button></td></tr>`
+                    h+=`<tr><td align="right" style="vertical-align:top"><b style="color:maroon">${k}</b>:</td><td><textarea id="bearer" rows=4 columns=30>${profile[k]}</textarea><button style="vertical-align:top" onclick="bearer.select();navigator.clipboard.writeText(bearer.value)">copy</button></td></tr>`
                 }
                 
             })
